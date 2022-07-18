@@ -16,3 +16,23 @@ toggleBtn.addEventListener("click", () => {
 closeBtn.addEventListener("click", () => {
   sideWrapper.classList.remove("show");
 });
+
+// console.table(sublinks);
+// set sidebar
+sidebar.innerHTML = sublinks
+  .map((item) => {
+    const { links, page } = item;
+    return `<article>
+  <h4>${page}</h4>
+  <div class="sidebar-sublinks">
+  ${links
+    .map((link) => {
+      return `<a href="${item.url}">
+      <i class="${link.icon}"></i>${link.label}
+      </a>`;
+    })
+    .join("")}
+  </div>
+  </article>`;
+  })
+  .join("");
